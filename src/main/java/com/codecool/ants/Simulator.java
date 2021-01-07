@@ -1,18 +1,18 @@
 package com.codecool.ants;
 
 import com.codecool.ants.logic.AntColony;
-import com.codecool.ants.view.Displayer;
+import com.codecool.ants.view.Display;
 
 public class Simulator {
 
-    private final Displayer displayer;
+    private final Display display;
     private final AntColony antColony;
     private int actualStep = 0;
     private int generation = 0;
 
     public Simulator() {
         this.antColony = new AntColony(new SimulatorSettings(30, 15, 10, 5));
-        this.displayer = new Displayer(this);
+        this.display = new Display(this);
     }
 
     public AntColony getAntColony() {
@@ -21,9 +21,11 @@ public class Simulator {
 
     public static void main(String[] args) {
         Simulator simulator = new Simulator();
+        simulator.welcome();
+    }
 
-        // TODO: implement simulator!
-        System.out.println("Ant colony simulator coming soon...");
+    private void welcome() {
+        display.welcome();
     }
 
     private void start() {
