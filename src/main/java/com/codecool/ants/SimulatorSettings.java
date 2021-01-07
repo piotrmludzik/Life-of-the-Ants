@@ -2,31 +2,31 @@ package com.codecool.ants;
 
 public class SimulatorSettings {
 
-    private final int antColonySize;
-    private final int antWorkersNumber;
-    private final int antSoldiersNumber;
-    private final int antDronesNumber;
+    private final int colonySize;
+    private final int workersNumber;
+    private final int soldiersNumber;
+    private final int dronesNumber;
 
-    public SimulatorSettings(int antColonySize, int antWorkersNumber, int antSoldiersNumber, int antDronesNumber) {
-        this.antColonySize = antColonySize;
-        this.antWorkersNumber = antWorkersNumber;
-        this.antSoldiersNumber = antSoldiersNumber;
-        this.antDronesNumber = antDronesNumber;
+    public SimulatorSettings(int colonySize, int workersNumber, int soldiersNumber, int dronesNumber) {
+        this.colonySize = colonySize;
+        this.workersNumber = workersNumber;
+        this.soldiersNumber = soldiersNumber;
+        this.dronesNumber = dronesNumber;
     }
 
-    public int getAntColonySize() {
-        return antColonySize;
+    public int getColonySize() {
+        return colonySize;
     }
 
-    public int getAntWorkersNumber() {
-        return antWorkersNumber;
+    public int getWorkersNumber() {
+        return workersNumber;
     }
 
-    public int getAntSoldiersNumber() {
-        return antSoldiersNumber;
+    public int getSoldiersNumber() {
+        return soldiersNumber;
     }
 
-    public int getAntDronesNumber() {
-        return antDronesNumber;
+    public int getDronesNumber() {
+        return dronesNumber;
     }
 }

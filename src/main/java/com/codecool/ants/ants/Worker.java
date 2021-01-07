@@ -1,11 +1,11 @@
 package com.codecool.ants.ants;
 
-import com.codecool.ants.geometry.Position;
+import com.codecool.ants.logic.Field;
 
 public class Worker extends Ant {
 
-    public Worker(Position position) {
-        super('W', position);
+    public Worker(Field field) {
+        super(field, 'W');
     }
 
     @Override

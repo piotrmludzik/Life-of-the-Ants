@@ -1,11 +1,11 @@
 package com.codecool.ants.ants;
 
-import com.codecool.ants.geometry.Position;
+import com.codecool.ants.logic.Field;
 
 public class Soldier extends Ant {
 
-    public Soldier(Position position) {
-        super('S', position);
+    public Soldier(Field field) {
+        super(field, 'S');
     }
 
     @Override

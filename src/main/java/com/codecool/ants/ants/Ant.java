@@ -1,23 +1,24 @@
 package com.codecool.ants.ants;
 
 import com.codecool.ants.geometry.Position;
+import com.codecool.ants.logic.Field;
 
 public class Ant {
 
-    private final char displaySymbol;
-    private final Position position;
+    private final Field field;
+    private final char symbol;
 
-    public Ant(char displaySymbol, Position position) {
-        this.displaySymbol = displaySymbol;
-        this.position = position;
+    public Ant(Field field, char symbol) {
+        this.field = field;
+        this.symbol = symbol;
     }
 
-    public char getDisplaySymbol() {
-        return displaySymbol;
+    public char getSymbol() {
+        return symbol;
     }
 
     public Position getPosition() {
-        return position;
+        return field.getPosition();
     }
 
     public void move() {

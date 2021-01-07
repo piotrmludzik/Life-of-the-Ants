@@ -1,13 +1,13 @@
 package com.codecool.ants.ants;
 
-import com.codecool.ants.geometry.Position;
+import com.codecool.ants.logic.Field;
 
 public class Queen extends Ant {
 
     private int matingMood;
 
-    public Queen(Position position) {
-        super('Q', position);
+    public Queen(Field field) {
+        super(field, 'Q');
         setNewMatingMood();
     }
 

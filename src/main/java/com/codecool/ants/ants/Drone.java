@@ -1,6 +1,6 @@
 package com.codecool.ants.ants;
 
-import com.codecool.ants.geometry.Position;
+import com.codecool.ants.logic.Field;
 
 public class Drone extends Ant {
 
@@ -9,8 +9,8 @@ public class Drone extends Ant {
     private final Queen queen;
     private int holdCount = HOLD_VALUE;
 
-    public Drone(Position position, Queen queen) {
-        super('D', position);
+    public Drone(Field field, Queen queen) {
+        super(field, 'D');
         this.queen = queen;
     }
 

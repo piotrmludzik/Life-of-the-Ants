@@ -9,10 +9,10 @@ public class Display {
     private final AntColony antColony;
     private final int colonySize;
 
-    public Display(Simulator simulator, int colonySize) {
+    public Display(Simulator simulator) {
         this.simulator = simulator;
         this.antColony = simulator.getAntColony();
-        this.colonySize = (Math.max(colonySize + 4, 50));  // +4 - visual space from ant colony, 50 - min. size
+        this.colonySize = (Math.max(simulator.getSettings().getColonySize() + 4, 50));  // +4 - visual space from ant colony, 50 - min. size
     }
 
     public void welcome() {
