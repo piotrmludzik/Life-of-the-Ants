@@ -7,15 +7,17 @@ public class Display {
 
     private final Simulator simulator;
     private final AntColony antColony;
+    private final int colonySize;
 
-    public Display(Simulator simulator) {
+    public Display(Simulator simulator, int colonySize) {
         this.simulator = simulator;
         this.antColony = simulator.getAntColony();
+        this.colonySize = colonySize;
     }
 
     public void welcome() {
         printLineSeparator();
-        println("         Welcome to Ant Colony simulator!");
+        println(center("Welcome to Ant Colony simulator!"));
         printLineSeparator();
         legend();
         println("");
@@ -49,9 +51,16 @@ public class Display {
         printLineSeparator();
     }
 
-    private void printLineSeparator() {
-        println("-".repeat(50));
+    private String center(String text) {
+        int numberOfSpaces = colonySize - text.length();
+
+        return " ".repeat(numberOfSpaces / 2) + text;
     }
+
+    private void printLineSeparator() {
+        println("-".repeat(colonySize + 2));
+    }
+
     private void println(String text) {
         System.out.println(text);
     }

@@ -14,9 +14,9 @@ public class Simulator {
     private int generation = 0;
 
     public Simulator() {
-        simulatorSettings = new SimulatorSettings(30, 15, 10, 5);
+        simulatorSettings = new SimulatorSettings(50, 25, 15, 5);
         antColony = new AntColony(simulatorSettings);
-        display = new Display(this);
+        display = new Display(this, simulatorSettings.getAntColonySize());
     }
 
     public AntColony getAntColony() {
