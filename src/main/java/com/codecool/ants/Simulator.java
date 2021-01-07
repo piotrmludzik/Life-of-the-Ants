@@ -7,14 +7,16 @@ import com.codecool.ants.view.Keyboard.Key;
 
 public class Simulator {
 
+    private final SimulatorSettings simulatorSettings;
     private final Display display;
     private final AntColony antColony;
     private int actualStep = 0;
     private int generation = 0;
 
     public Simulator() {
-        this.antColony = new AntColony(new SimulatorSettings(30, 15, 10, 5));
-        this.display = new Display(this);
+        simulatorSettings = new SimulatorSettings(30, 15, 10, 5);
+        antColony = new AntColony(simulatorSettings);
+        display = new Display(this);
     }
 
     public AntColony getAntColony() {
