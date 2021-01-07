@@ -10,7 +10,7 @@ public class AntColony {
     private final SimulatorSettings simulatorSettings;
     private final Ant[ ] ants;
     private final Queen queen;
-    private final char[ ][ ] colonySchame;
+    private final char[ ][ ] colonyScheme;
     private final int width;
     private int generation = 0;
 
@@ -18,14 +18,14 @@ public class AntColony {
         this.simulatorSettings = gs;
 
         this.width = simulatorSettings.getAntColonySize();
-        this.colonySchame = generateColonySchame();
+        this.colonyScheme = generateColonyScheme();
 
         this.ants = generateAnts(gs.getAntWorkersNumber(), gs.getAntSoldiersNumber(), gs.getAntDronesNumber());
         this.queen = new Queen(new Position(width / 2, width / 2));
     }
 
-    private char[ ][ ] generateColonySchame() {
-        // TODO: implement generateColonySchame().
+    private char[ ][ ] generateColonyScheme() {
+        // TODO: implement generateColonyScheme().
         return new char[width][width];
     }
 
@@ -34,8 +34,8 @@ public class AntColony {
         return new Ant[0];
     }
 
-    public char[ ][ ] getColonySchame() {
-        return colonySchame;
+    public char[ ][ ] getColonyScheme() {
+        return colonyScheme;
     }
 
     public int getWidth() {
