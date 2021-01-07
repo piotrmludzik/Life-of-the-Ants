@@ -46,7 +46,7 @@ public class Keyboard {
                 continue;
             }
 
-            Key keyPressed = Key.getKey(userInput.charAt(0));
+            Key keyPressed = Key.getKey(userInput.toLowerCase().charAt(0));
             if (keyPressed != null)
                 return keyPressed;
 
