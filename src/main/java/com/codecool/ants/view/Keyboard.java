@@ -8,6 +8,7 @@ public class Keyboard {
         ENTER('\n'),
         L('l'),
         H('h'),
+        S('s'),
         Q('q');
 
         private final char keyChar;

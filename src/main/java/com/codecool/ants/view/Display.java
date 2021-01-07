@@ -38,7 +38,17 @@ public class Display {
         println("   enter - next step");
         println("       l - show legend");
         println("       h - show help");
+        println("       s - show settings");
         println("       q - quit");
+    }
+
+    public void settings() {
+        println(" Settings:");
+        println("   colony size:  " + simulator.getSettings().getColonySize());
+        println("   ant Queen:    1");
+        println("   ant workers:  " + simulator.getSettings().getWorkersNumber());
+        println("   ant soldiers: " + simulator.getSettings().getSoldiersNumber());
+        println("   ant drones:   " + simulator.getSettings().getDronesNumber());
     }
 
     public void colony() {
@@ -47,14 +57,6 @@ public class Display {
         printLineSeparator();
         colonyScheme();
         printLineSeparator();
-    }
-
-    private void colonyStatus() {
-        println(" Day: " + simulator.getActualStep() + "   Generation of ants: " + antColony.getGeneration());
-    }
-
-    private void colonyScheme() {
-        // TODO: colony scheme.
     }
 
     public void end() {
