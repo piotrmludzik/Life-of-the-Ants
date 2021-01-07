@@ -12,7 +12,7 @@ public class Display {
     public Display(Simulator simulator, int colonySize) {
         this.simulator = simulator;
         this.antColony = simulator.getAntColony();
-        this.colonySize = colonySize;
+        this.colonySize = (Math.max(colonySize + 4, 50));  // +4 - visual space from ant colony, 50 - min. size
     }
 
     public void welcome() {
@@ -47,7 +47,7 @@ public class Display {
 
     public void end() {
         printLineSeparator();
-        println(" Thank you for using the Ant Colony simulator!");
+        println(center("Thank you for using the Ant Colony simulator!"));
         printLineSeparator();
     }
 
@@ -58,7 +58,7 @@ public class Display {
     }
 
     private void printLineSeparator() {
-        println("-".repeat(colonySize + 2));
+        println("-".repeat(colonySize));
     }
 
     private void println(String text) {
