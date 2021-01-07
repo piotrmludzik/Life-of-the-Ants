@@ -13,7 +13,7 @@ public class Simulator {
     private int actualStep = 0;
 
     public Simulator() {
-        settings = new SimulatorSettings(30, 15, 10, 5);
+        settings = new SimulatorSettings(20, 15, 10, 5);
         antColony = new AntColony(settings.getColonySize());
         display = new Display(this);
     }
@@ -56,6 +56,9 @@ public class Simulator {
                     break;
                 case H:
                     display.help();
+                    break;
+                case S:
+                    display.settings();
             }
         } while(key != Key.Q);
 

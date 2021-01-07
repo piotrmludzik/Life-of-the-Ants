@@ -35,6 +35,14 @@ public class AntColony {
         // TODO: implement generateAnts().
     }
 
+    public Field[][] getFields() {
+        return fields;
+    }
+
+    public Field getField(int x, int y) {
+        return fields[x][y];
+    }
+
     public int getGeneration() {
         return generation;
     }

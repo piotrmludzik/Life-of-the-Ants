@@ -23,4 +23,8 @@ public class Field {
     public Position getPosition() {
         return position;
     }
+
+    public boolean isEmpty() {
+        return ant == null;
+    }
 }
