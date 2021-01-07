@@ -35,6 +35,7 @@ public class Keyboard {
         String userInput;
 
         while(true) {
+            System.out.print("> ");
             userInput = scanner.nextLine();
 
             if (userInput.isEmpty())
