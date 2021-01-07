@@ -1,5 +1,6 @@
 package com.codecool.ants.logic;
 
+import com.codecool.ants.ants.Queen;
 import com.codecool.ants.geometry.Position;
 
 public class AntColony {
@@ -14,7 +15,6 @@ public class AntColony {
         fields = generateFields();
         enterQueen();
         generateAnts();
-//        this.queen = new Queen(new Position(width / 2, width / 2));
     }
 
     private Field[ ][ ] generateFields() {
@@ -28,7 +28,9 @@ public class AntColony {
     }
 
     private void enterQueen() {
-        // TODO: enter the Queen.
+        int middle = colonySize / 2;
+        Field homeField = fields[middle][middle];
+        homeField.setAnt(new Queen(homeField));
     }
 
     private void generateAnts() {
