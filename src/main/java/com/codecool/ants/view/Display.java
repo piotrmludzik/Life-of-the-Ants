@@ -20,10 +20,8 @@ public class Display {
         printLineSeparator();
         println(center("Welcome to Ant Colony simulator!"));
         printLineSeparator();
-        legend();
-        println("");
-        help();
-        printLineSeparator();
+        settings();
+        colony();
     }
 
     public void legend() {
