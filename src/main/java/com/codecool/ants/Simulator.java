@@ -2,6 +2,8 @@ package com.codecool.ants;
 
 import com.codecool.ants.logic.AntColony;
 import com.codecool.ants.view.Display;
+import com.codecool.ants.view.Keyboard;;
+import com.codecool.ants.view.Keyboard.Key;
 
 public class Simulator {
 
@@ -22,6 +24,7 @@ public class Simulator {
     public static void main(String[] args) {
         Simulator simulator = new Simulator();
         simulator.welcome();
+        simulator.start();
     }
 
     private void welcome() {
@@ -29,11 +32,33 @@ public class Simulator {
     }
 
     private void start() {
-        // TODO: implement start().
+        Keyboard keyboard = new Keyboard();
+        Keyboard.Key key;
+
+        do {
+            key = keyboard.getKeyPressed();
+
+            switch (key) {
+                case ENTER:
+                    doStep();
+                    break;
+                case L:
+                    display.legend();
+                    break;
+                case H:
+                    display.help();
+            }
+        } while(key != Key.Q);
+
+        end();
     }
 
     private void doStep() {
         // TODO: implement doStep().
         actualStep++;
+    }
+
+    private void end() {
+        display.end();
     }
 }

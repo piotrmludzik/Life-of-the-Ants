@@ -14,13 +14,13 @@ public class Display {
     }
 
     public void welcome() {
-        println("-".repeat(46));
-        println("       Welcome to Ant Colony simulator!");
-        println("-".repeat(46));
+        printLineSeparator();
+        println("         Welcome to Ant Colony simulator!");
+        printLineSeparator();
         legend();
         println("");
         help();
-        println("-".repeat(46));
+        printLineSeparator();
     }
 
     public void legend() {
@@ -43,6 +43,15 @@ public class Display {
         // TODO: implement display().
     }
 
+    public void end() {
+        printLineSeparator();
+        println(" Thank you for using the Ant Colony simulator!");
+        printLineSeparator();
+    }
+
+    private void printLineSeparator() {
+        println("-".repeat(50));
+    }
     private void println(String text) {
         System.out.println(text);
     }
