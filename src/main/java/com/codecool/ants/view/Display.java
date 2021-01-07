@@ -41,8 +41,20 @@ public class Display {
         println("       q - quit");
     }
 
-    public void display() {
-        // TODO: implement display().
+    public void colony() {
+        printLineSeparator();
+        colonyStatus();
+        printLineSeparator();
+        colonyScheme();
+        printLineSeparator();
+    }
+
+    private void colonyStatus() {
+        println(" Day: " + simulator.getActualStep() + "   Generation of ants: " + antColony.getGeneration());
+    }
+
+    private void colonyScheme() {
+        // TODO: colony scheme.
     }
 
     public void end() {

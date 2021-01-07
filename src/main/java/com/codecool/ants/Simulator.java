@@ -18,12 +18,16 @@ public class Simulator {
         display = new Display(this);
     }
 
+    public SimulatorSettings getSettings() {
+        return settings;
+    }
+
     public AntColony getAntColony() {
         return antColony;
     }
 
-    public SimulatorSettings getSettings() {
-        return settings;
+    public int getActualStep() {
+        return actualStep;
     }
 
     public static void main(String[] args) {
@@ -58,12 +62,14 @@ public class Simulator {
         end();
     }
 
-    private void doStep() {
-        // TODO: implement doStep().
-        actualStep++;
-    }
-
     private void end() {
         display.end();
+    }
+
+    private void doStep() {
+        antColony.update();
+        actualStep++;
+
+        display.colony();
     }
 }
