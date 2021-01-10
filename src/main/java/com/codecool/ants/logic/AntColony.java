@@ -30,7 +30,7 @@ public class AntColony {
         Field[ ][ ] newColony = new Field[colonySize][colonySize];
         for (int x=0; x < colonySize; x++) {
             for (int y=0; y < colonySize; y++)
-                newColony[x][y] = new Field(new Position(x, y));
+                newColony[x][y] = new Field(new Position(x, y), this);
         }
 
         return newColony;
