@@ -6,8 +6,8 @@ package com.codecool.ants.geometry;
         SOUTH( 0,-1),
         WEST (-1, 0);
 
-        private int directionX;
-        private int directionY;
+        private final int directionX;
+        private final int directionY;
 
         Direction(int directionX, int directionY) {
             this.directionX = directionX;
@@ -20,5 +20,14 @@ package com.codecool.ants.geometry;
 
         public int getDirectionY() {
             return directionY;
+        }
+
+        public static Direction[ ] getDirectionPossibilities() {
+            Direction[] possibilities = new Direction[Direction.values().length];
+            int i = 0;
+            for (Direction direction : Direction.values())
+                possibilities[i++] = direction;
+
+            return possibilities;
         }
     }
