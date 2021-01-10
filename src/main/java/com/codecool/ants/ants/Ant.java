@@ -5,6 +5,15 @@ import com.codecool.ants.logic.Field;
 
 public class Ant {
 
+    public static class AntsType {
+        public static final String QUEEN = "Queen";
+        public static final String WORKER = "Worker";
+        public static final String SOLDIER = "Soldier";
+        public static final String DORNE = "Drone";
+
+        private AntsType() {}
+    }
+
     private final Field field;
     private final char symbol;
 

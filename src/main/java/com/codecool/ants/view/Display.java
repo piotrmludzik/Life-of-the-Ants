@@ -71,7 +71,7 @@ public class Display {
             line.append("┃");
             for (int col = 0; col < colonySize; col++) {
                 String field = "  ";
-                if (!antColony.getField(row, col).isEmpty())
+                if (antColony.getField(row, col).hasAnt())
                     field = "●" + antColony.getField(row, col).getAnt().getSymbol();
 
                 line.append(field);

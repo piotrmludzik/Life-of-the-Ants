@@ -1,16 +1,23 @@
 package com.codecool.ants.logic;
 
+import com.codecool.ants.SimulatorSettings;
+import com.codecool.ants.ants.Ant;
+import com.codecool.ants.ants.AntFactory;
 import com.codecool.ants.ants.Queen;
 import com.codecool.ants.geometry.Position;
+import com.codecool.ants.util.Randomizer;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class AntColony {
 
+    private final SimulatorSettings settings;
     private final Field[][] fields;
-    private final int colonySize;
     private int generation = 0;
 
-    public AntColony(int colonySize) {
-        this.colonySize = colonySize;
+    public AntColony(SimulatorSettings settings) {
+        this.settings = settings;
 
         fields = generateFields();
         enterQueen();
@@ -18,6 +25,7 @@ public class AntColony {
     }
 
     private Field[ ][ ] generateFields() {
+        int colonySize = settings.getColonySize();
         Field[ ][ ] newColony = new Field[colonySize][colonySize];
         for (int row=0; row < colonySize; row++) {
             for (int col=0; col < colonySize; col++)
@@ -28,13 +36,32 @@ public class AntColony {
     }
 
     private void enterQueen() {
-        int middle = colonySize / 2;
+        int middle = settings.getColonySize() / 2;
         Field homeField = fields[middle][middle];
         homeField.setAnt(new Queen(homeField));
     }
 
     private void generateAnts() {
-        // TODO: implement generateAnts().
+        Map<String, Integer> antsNumber = new HashMap<>() {{
+            put(Ant.AntsType.WORKER, settings.getWorkersNumber());
+            put(Ant.AntsType.SOLDIER, settings.getSoldiersNumber());
+            put (Ant.AntsType.DORNE, settings.getDronesNumber());
+        }};
+        int colonySize = settings.getColonySize();
+
+        for (Map.Entry<String, Integer> entry : antsNumber.entrySet()) {
+            for (int n=0; n < entry.getValue(); n++) {
+                int randX;
+                int randY;
+                do {
+                    randX = Randomizer.randomFromRange(0, colonySize);
+                    randY = Randomizer.randomFromRange(0, colonySize);
+                } while (getField(randX, randY).hasAnt());
+
+                Field field = getField(randX, randY);
+                field.setAnt(AntFactory.createAnt(entry.getKey(), field));
+            }
+        }
     }
 
     public Field[][] getFields() {

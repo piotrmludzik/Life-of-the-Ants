@@ -24,7 +24,7 @@ public class Field {
         return position;
     }
 
-    public boolean isEmpty() {
-        return ant == null;
+    public boolean hasAnt() {
+        return ant != null;
     }
 }

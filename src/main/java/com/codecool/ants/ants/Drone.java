@@ -6,12 +6,12 @@ public class Drone extends Ant {
 
     private final int HOLD_VALUE = 10;
 
-    private final Queen queen;
+//    private final Queen queen;
     private int holdCount = HOLD_VALUE;
 
-    public Drone(Field field, Queen queen) {
+    public Drone(Field field) {
         super(field, 'D');
-        this.queen = queen;
+//        this.queen = queen;
     }
 
     @Override
