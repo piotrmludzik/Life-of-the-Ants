@@ -77,6 +77,12 @@ public class AntColony {
     }
 
     public void update() {
-        // TODO: implement update();
+        int colonySize = settings.getColonySize();
+        for (int x=0; x < colonySize; x++) {
+            for (int y=0; y < colonySize; y++) {
+                if (fields[x][y].hasAnt())
+                    fields[x][y].getAnt().move();
+            }
+        }
     }
 }
