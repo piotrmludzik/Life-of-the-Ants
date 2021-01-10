@@ -14,10 +14,12 @@ public class AntColony {
 
     private final SimulatorSettings settings;
     private final Field[][] fields;
+    private int colonySize;
     private int generation = 0;
 
     public AntColony(SimulatorSettings settings) {
         this.settings = settings;
+        this.colonySize = settings.getColonySize();
 
         fields = generateFields();
         enterQueen();
@@ -25,7 +27,6 @@ public class AntColony {
     }
 
     private Field[ ][ ] generateFields() {
-        int colonySize = settings.getColonySize();
         Field[ ][ ] newColony = new Field[colonySize][colonySize];
         for (int x=0; x < colonySize; x++) {
             for (int y=0; y < colonySize; y++)
@@ -47,7 +48,6 @@ public class AntColony {
             put(Ant.AntsType.SOLDIER, settings.getSoldiersNumber());
             put (Ant.AntsType.DORNE, settings.getDronesNumber());
         }};
-        int colonySize = settings.getColonySize();
 
         for (Map.Entry<String, Integer> entry : antsNumber.entrySet()) {
             for (int n=0; n < entry.getValue(); n++) {
