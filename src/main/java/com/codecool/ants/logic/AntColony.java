@@ -27,9 +27,9 @@ public class AntColony {
     private Field[ ][ ] generateFields() {
         int colonySize = settings.getColonySize();
         Field[ ][ ] newColony = new Field[colonySize][colonySize];
-        for (int row=0; row < colonySize; row++) {
-            for (int col=0; col < colonySize; col++)
-                newColony[row][col] = new Field(new Position(row, col));
+        for (int x=0; x < colonySize; x++) {
+            for (int y=0; y < colonySize; y++)
+                newColony[x][y] = new Field(new Position(x, y));
         }
 
         return newColony;
