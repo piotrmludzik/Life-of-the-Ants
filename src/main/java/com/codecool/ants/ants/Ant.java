@@ -1,9 +1,10 @@
 package com.codecool.ants.ants;
 
+import com.codecool.ants.geometry.Direction;
 import com.codecool.ants.geometry.Position;
 import com.codecool.ants.logic.Field;
 
-public class Ant {
+public abstract class Ant {
 
     public static class AntsType {
         public static final String QUEEN = "Queen";
@@ -14,8 +15,8 @@ public class Ant {
         private AntsType() {}
     }
 
-    private final Field field;
     private final char symbol;
+    private Field field;
 
     public Ant(Field field, char symbol) {
         this.field = field;
@@ -26,11 +27,28 @@ public class Ant {
         return symbol;
     }
 
+    public Field getField() {
+        return field;
+    }
+
     public Position getPosition() {
         return field.getPosition();
     }
 
-    public void move() {
-        // TODO: implement the ant move.
+    public void move() {}
+
+    protected void move(Direction direction) {
+        if (outOfColony()) return;
+
+        field.removeAnt();
+        field = getField().getNeighborField(direction);
+        field.setAnt(this);
+    }
+
+    private boolean outOfColony() {
+        return getPosition().getX() == 0 ||
+                getPosition().getY() == 0 ||
+                getPosition().getX() == field.getAntColony().getColonySize() ||
+                getPosition().getY() == field.getAntColony().getColonySize();
     }
 }

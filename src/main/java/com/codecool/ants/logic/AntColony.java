@@ -72,6 +72,10 @@ public class AntColony {
         return fields[x][y];
     }
 
+    public int getColonySize() {
+        return colonySize;
+    }
+
     public int getGeneration() {
         return generation;
     }
