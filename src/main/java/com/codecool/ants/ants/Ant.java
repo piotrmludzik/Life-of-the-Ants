@@ -47,8 +47,8 @@ public abstract class Ant {
 
     private boolean isAntMoveOutOfColony(Direction direction) {
         int colonySize = field.getAntColony().getColonySize() - 1;
-        int targetX = getPosition().getX() + direction.getDirectionX();
-        int targetY = getPosition().getY() + direction.getDirectionY();
+        int targetX = getPosition().x + direction.vectorX;
+        int targetY = getPosition().y + direction.vectorY;
 
         return targetX < 0 || targetX > colonySize ||
                 targetY < 0 || targetY > colonySize;

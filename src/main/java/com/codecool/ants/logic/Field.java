@@ -35,7 +35,7 @@ public class Field {
         setAnt(null);
     }
     public Field getNeighborField(Direction direction) {
-        return antColony.getField(position.getX() + direction.getDirectionX(), position.getY() + direction.getDirectionY());
+        return antColony.getField(position.x + direction.vectorX, position.y + direction.vectorY);
     }
 
     public boolean hasAnt() {
