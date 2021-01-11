@@ -38,17 +38,19 @@ public abstract class Ant {
     public void move() {}
 
     protected void move(Direction direction) {
-        if (outOfColony()) return;
+        if (isAntMoveOutOfColony(direction)) return;
 
         field.removeAnt();
         field = getField().getNeighborField(direction);
         field.setAnt(this);
     }
 
-    private boolean outOfColony() {
-        return getPosition().getX() == 0 ||
-                getPosition().getY() == 0 ||
-                getPosition().getX() == field.getAntColony().getColonySize() ||
-                getPosition().getY() == field.getAntColony().getColonySize();
+    private boolean isAntMoveOutOfColony(Direction direction) {
+        int colonySize = field.getAntColony().getColonySize() - 1;
+        int targetX = getPosition().getX() + direction.getDirectionX();
+        int targetY = getPosition().getY() + direction.getDirectionY();
+
+        return targetX < 0 || targetX > colonySize ||
+                targetY < 0 || targetY > colonySize;
     }
 }
