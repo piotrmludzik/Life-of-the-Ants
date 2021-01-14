@@ -46,7 +46,7 @@ public class AntColony {
         Map<String, Integer> antsNumber = new HashMap<>() {{
             put(Ant.AntsType.WORKER, settings.getWorkersNumber());
             put(Ant.AntsType.SOLDIER, settings.getSoldiersNumber());
-            put (Ant.AntsType.DORNE, settings.getDronesNumber());
+            put (Ant.AntsType.DRONE, settings.getDronesNumber());
         }};
 
         for (Map.Entry<String, Integer> entry : antsNumber.entrySet()) {

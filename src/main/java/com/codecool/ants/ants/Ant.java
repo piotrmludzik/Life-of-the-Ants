@@ -10,7 +10,7 @@ public abstract class Ant {
         public static final String QUEEN = "Queen";
         public static final String WORKER = "Worker";
         public static final String SOLDIER = "Soldier";
-        public static final String DORNE = "Drone";
+        public static final String DRONE = "Drone";
 
         private AntsType() {}
     }
@@ -38,7 +38,8 @@ public abstract class Ant {
     public void move() {}
 
     protected void move(Direction direction) {
-        if (isAntMoveOutOfColony(direction)) return;
+//        if (isMoveOnOtherAnt(direction)) return;
+        if (isMoveOutOfColony(direction)) return;
 
         field.removeAnt();
         field = getField().getNeighborField(direction);
