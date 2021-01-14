@@ -38,15 +38,19 @@ public abstract class Ant {
     public void move() {}
 
     protected void move(Direction direction) {
-//        if (isMoveOnOtherAnt(direction)) return;
         if (isMoveOutOfColony(direction)) return;
+        if (isMoveOnOtherAnt(direction)) return;
 
         field.removeAnt();
         field = getField().getNeighborField(direction);
         field.setAnt(this);
     }
 
-    private boolean isAntMoveOutOfColony(Direction direction) {
+    private boolean isMoveOnOtherAnt(Direction direction) {
+        return getField().getNeighborField(direction).hasAnt();
+    }
+
+    private boolean isMoveOutOfColony(Direction direction) {
         int colonySize = field.getAntColony().getColonySize() - 1;
         int targetX = getPosition().x + direction.vectorX;
         int targetY = getPosition().y + direction.vectorY;
