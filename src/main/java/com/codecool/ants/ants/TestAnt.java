@@ -1,4 +1,4 @@
-// NOTE: a test ant.
+// A Test Ant, not for a production code.
 package com.codecool.ants.ants;
 
 import com.codecool.ants.geometry.Direction;
@@ -13,8 +13,8 @@ public class TestAnt extends Ant {
 
     @Override
     public void move() {
-        System.out.println("Actual: " + super.getPosition().x + "-" + super.getPosition().y);  // NOTE: a test ant.
+        System.out.println("Actual: " + super.getPosition().x + "-" + super.getPosition().y);
         super.move(Randomizer.chooseDirection(Direction.getDirectionPossibilities()));
-        System.out.println("Target: " + super.getPosition().x + "-" + super.getPosition().y);  // NOTE: a test ant.
+        System.out.println("Target: " + super.getPosition().x + "-" + super.getPosition().y);
     }
 }

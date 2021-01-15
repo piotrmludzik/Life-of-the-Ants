@@ -7,7 +7,9 @@ import com.codecool.ants.ants.Queen;
 import com.codecool.ants.geometry.Position;
 import com.codecool.ants.util.Randomizer;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class AntColony {
@@ -63,19 +65,20 @@ public class AntColony {
             }
         }
 
-        // NOTE: a test ant.
-        // ------------------------------------------------------------------------------------------------------------
-        System.out.println("Create a Test Ant");
-        int randX;
-        int randY;
-        do {
-            randX = Randomizer.randomFromRange(0, colonySize);
-            randY = Randomizer.randomFromRange(0, colonySize);
-        } while (getField(randX, randY).hasAnt());
-
-        Field field = getField(randX, randY);
-        field.setAnt(AntFactory.createAnt("TestAnt", field));
-        // ------------------------------------------------------------------------------------------------------------
+//        // ------------------------------------------------------------------------------------------------------------
+//        // A Test Ant
+//        // ------------------------------------------------------------------------------------------------------------
+//        System.out.println("Create a Test Ant");
+//        int randX;
+//        int randY;
+//        do {
+//            randX = Randomizer.randomFromRange(0, colonySize);
+//            randY = Randomizer.randomFromRange(0, colonySize);
+//        } while (getField(randX, randY).hasAnt());
+//
+//        Field field = getField(randX, randY);
+//        field.setAnt(AntFactory.createAnt("TestAnt", field));
+//        // ------------------------------------------------------------------------------------------------------------
     }
 
     public Field[ ][ ] getFields() {
@@ -97,19 +100,15 @@ public class AntColony {
     public void update() {
         int colonySize = settings.getColonySize();
 
-        System.out.println("   before loop...");  // NOTE: a test ant.
-        int loopX = 1;  // NOTE: a test ant.
-        int loopY = 1;  // NOTE: a test ant.
+        List<Ant> antsToMove = new ArrayList<>();
         for (int x=0; x < colonySize; x++) {
             for (int y=0; y < colonySize; y++) {
-                System.out.println("   loop X number: " + loopX);  // NOTE: a test ant.
-                System.out.println("   loop Y number: " + loopY);  // NOTE: a test ant.
                 if (fields[x][y].hasAnt())
-                    fields[x][y].getAnt().move();  // FIXME: when move the ant before the end of the loop, sometimes the ant moves again!
-                loopY++;  // NOTE: a test ant.
+                    antsToMove.add(fields[x][y].getAnt());
             }
-            loopX++;  // NOTE: a test ant.
         }
+
+        antsToMove.forEach(Ant::move);
     }
 
     public boolean isPositionOutOfColony(Position target) {

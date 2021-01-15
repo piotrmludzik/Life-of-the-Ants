@@ -44,11 +44,9 @@ public class Simulator {
         Keyboard keyboard = new Keyboard();
         Keyboard.Key key;
 
-        System.out.println("Initialaze step loop...");  // NOTE: a test ant.
         do {
             key = keyboard.getKeyPressed();
 
-            System.out.println("Do next step...");  // NOTE: a test ant.
             switch (key) {
                 case ENTER:
                     doStep();
@@ -72,12 +70,8 @@ public class Simulator {
     }
 
     private void doStep() {
-        System.out.println("Update colony...");  // NOTE: a test ant.
         antColony.update();
-        System.out.println("Set step number...");  // NOTE: a test ant.
         actualStep++;
-
-        System.out.println("Display colony...");  // NOTE: a test ant.
         display.colony();
     }
 }
