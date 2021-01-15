@@ -64,7 +64,7 @@ public class AntColony {
         }
     }
 
-    public Field[][] getFields() {
+    public Field[ ][ ] getFields() {
         return fields;
     }
 
@@ -88,5 +88,10 @@ public class AntColony {
                     fields[x][y].getAnt().move();
             }
         }
+    }
+
+    public boolean isPositionOutOfColony(Position target) {
+        return target.x < 0 || target.x > colonySize - 1 ||
+                target.y < 0 || target.y > colonySize - 1;
     }
 }

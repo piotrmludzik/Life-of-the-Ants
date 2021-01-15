@@ -34,8 +34,8 @@ public class Field {
     public void removeAnt() {
         setAnt(null);
     }
-    public Field getNeighborField(Direction direction) {
-        return antColony.getField(position.x + direction.vectorX, position.y + direction.vectorY);
+    public Field getNeighborField(Position target) {
+        return antColony.getField(target.x, target.y);
     }
 
     public boolean hasAnt() {
