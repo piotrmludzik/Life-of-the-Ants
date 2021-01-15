@@ -96,11 +96,19 @@ public class AntColony {
 
     public void update() {
         int colonySize = settings.getColonySize();
+
+        System.out.println("   before loop...");  // NOTE: a test ant.
+        int loopX = 1;  // NOTE: a test ant.
+        int loopY = 1;  // NOTE: a test ant.
         for (int x=0; x < colonySize; x++) {
             for (int y=0; y < colonySize; y++) {
+                System.out.println("   loop X number: " + loopX);  // NOTE: a test ant.
+                System.out.println("   loop Y number: " + loopY);  // NOTE: a test ant.
                 if (fields[x][y].hasAnt())
-                    fields[x][y].getAnt().move();
+                    fields[x][y].getAnt().move();  // FIXME: when move the ant before the end of the loop, sometimes the ant moves again!
+                loopY++;  // NOTE: a test ant.
             }
+            loopX++;  // NOTE: a test ant.
         }
     }
 
