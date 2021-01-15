@@ -62,6 +62,20 @@ public class AntColony {
                 field.setAnt(AntFactory.createAnt(entry.getKey(), field));
             }
         }
+
+        // NOTE: a test ant.
+        // ------------------------------------------------------------------------------------------------------------
+        System.out.println("Create a Test Ant");
+        int randX;
+        int randY;
+        do {
+            randX = Randomizer.randomFromRange(0, colonySize);
+            randY = Randomizer.randomFromRange(0, colonySize);
+        } while (getField(randX, randY).hasAnt());
+
+        Field field = getField(randX, randY);
+        field.setAnt(AntFactory.createAnt("TestAnt", field));
+        // ------------------------------------------------------------------------------------------------------------
     }
 
     public Field[ ][ ] getFields() {
