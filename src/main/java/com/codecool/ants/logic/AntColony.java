@@ -7,10 +7,7 @@ import com.codecool.ants.ants.Queen;
 import com.codecool.ants.geometry.Position;
 import com.codecool.ants.util.Randomizer;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class AntColony {
 
@@ -45,24 +42,14 @@ public class AntColony {
     }
 
     private void generateAnts() {
-        Map<String, Integer> antsNumber = new HashMap<>()
-        {{
-            put(Ant.AntsType.WORKER, settings.getWorkersNumber());
-            put(Ant.AntsType.SOLDIER, settings.getSoldiersNumber());
-            put (Ant.AntsType.DRONE, settings.getDronesNumber());
-        }};
+        Map<String, Integer> antsInColony = getAntsInColony();
 
-        for (Map.Entry<String, Integer> ants : antsNumber.entrySet()) {
-            for (int n=0; n < ants.getValue(); n++) {
-                int randX;
-                int randY;
-                do {
-                    randX = Randomizer.randomFromRange(0, colonySize);
-                    randY = Randomizer.randomFromRange(0, colonySize);
-                } while (getField(randX, randY).hasAnt());
+        for (Map.Entry<String, Integer> ants : antsInColony.entrySet()) {
+            Field[ ] fieldsForNewAnt = getFieldsForNewAnt(ants.getKey());  // getKey -> an ant type
 
-                Field field = getField(randX, randY);
-                field.setAnt(AntFactory.createAnt(ants.getKey(), field));
+            for (int n=0; n < ants.getValue(); n++) {  // getValue -> ants number
+                Field freeField = getRandomFreeField(fieldsForNewAnt);
+                freeField.setAnt(AntFactory.createAnt(ants.getKey(), freeField));  // getKey -> an ant type
             }
         }
 
@@ -80,6 +67,51 @@ public class AntColony {
 //        Field field = getField(randX, randY);
 //        field.setAnt(AntFactory.createAnt("TestAnt", field));
 //        // ------------------------------------------------------------------------------------------------------------
+    }
+
+    private Map<String, Integer> getAntsInColony() {
+        return new HashMap<>(){{
+            put(Ant.AntsType.WORKER, settings.getWorkersNumber());
+            put(Ant.AntsType.SOLDIER, settings.getSoldiersNumber());
+            put (Ant.AntsType.DRONE, settings.getDronesNumber());
+        }};
+    }
+
+    private Field[ ] getFieldsForNewAnt(String antType) {
+        List<Field> fieldsForNewAnt = new ArrayList<>();
+        switch (antType) {
+            case Ant.AntsType.DRONE:
+                getFieldsForDrones(fieldsForNewAnt);
+                break;
+            default:  // other ants
+                getAllFields(fieldsForNewAnt);
+        }
+
+        return fieldsForNewAnt.toArray(new Field[0]);
+    }
+
+    private void getFieldsForDrones(List<Field> fieldsForNewAnt) {
+        getAllFields(fieldsForNewAnt);
+    }
+
+    private void getAllFields(List<Field> fieldsForNewAnt) {
+        for (int x=0; x < colonySize; x++) {
+            for (int y=0; y < colonySize; y++)
+                fieldsForNewAnt.add(fields[x][y]);
+        }
+    }
+
+    private Field getRandomFreeField(Field[ ] fieldsForNewAnt) {
+        Field freeField;
+        do {
+            freeField = getRandomField(fieldsForNewAnt);
+        } while (freeField.hasAnt());
+
+        return freeField;
+    }
+
+    private Field getRandomField(Field[ ] fields) {
+        return fields[Randomizer.randomFromRange(0, fields.length)];
     }
 
     public Field[ ][ ] getFields() {
