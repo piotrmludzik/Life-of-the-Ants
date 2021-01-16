@@ -15,4 +15,8 @@ public class Randomizer {
     public static Direction chooseDirection(Direction[ ] possibilities) {
         return possibilities[randomFromRange(0, possibilities.length)];
     }
+
+    public static boolean eventWithChance(int chance) {
+        return RANDOM.nextInt(100) < chance;
+    }
 }
