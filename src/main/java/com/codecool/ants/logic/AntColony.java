@@ -91,7 +91,16 @@ public class AntColony {
     }
 
     private void getFieldsForDrones(List<Field> fieldsForNewAnt) {
-        getAllFields(fieldsForNewAnt);
+        for (int x=0; x < colonySize; x++) {
+            for (int y=0; y < colonySize; y++)
+                if (isBorderOfColony(x, y))
+                    fieldsForNewAnt.add(fields[x][y]);
+        }
+    }
+
+    private boolean isBorderOfColony(int x, int y) {
+        return x == 0 || x == colonySize - 1 ||
+                y == 0 || y == colonySize - 1;
     }
 
     private void getAllFields(List<Field> fieldsForNewAnt) {
