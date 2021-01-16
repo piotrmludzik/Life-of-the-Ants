@@ -45,14 +45,15 @@ public class AntColony {
     }
 
     private void generateAnts() {
-        Map<String, Integer> antsNumber = new HashMap<>() {{
+        Map<String, Integer> antsNumber = new HashMap<>()
+        {{
             put(Ant.AntsType.WORKER, settings.getWorkersNumber());
             put(Ant.AntsType.SOLDIER, settings.getSoldiersNumber());
             put (Ant.AntsType.DRONE, settings.getDronesNumber());
         }};
 
-        for (Map.Entry<String, Integer> entry : antsNumber.entrySet()) {
-            for (int n=0; n < entry.getValue(); n++) {
+        for (Map.Entry<String, Integer> ants : antsNumber.entrySet()) {
+            for (int n=0; n < ants.getValue(); n++) {
                 int randX;
                 int randY;
                 do {
@@ -61,7 +62,7 @@ public class AntColony {
                 } while (getField(randX, randY).hasAnt());
 
                 Field field = getField(randX, randY);
-                field.setAnt(AntFactory.createAnt(entry.getKey(), field));
+                field.setAnt(AntFactory.createAnt(ants.getKey(), field));
             }
         }
 
