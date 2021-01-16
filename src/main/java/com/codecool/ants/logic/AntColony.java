@@ -82,11 +82,14 @@ public class AntColony {
         for (int x=0; x < colonySize; x++) {
             for (int y=0; y < colonySize; y++)
                 switch (antType) {
-                    case Ant.AntsType.DRONE:
+                    case Ant.AntsType.DRONE:  // move around
                         if (isFieldOnBorderOfColony(x, y))
                             fieldsForNewAnt.add(fields[x][y]);
                         break;
-                    default: // other ants
+                    case Ant.AntsType.SOLDIER:  // cannot be in the last row or column (then cannot move)
+                        if (isLastRowOrColumnField(x, y))
+                            break;
+                    default:  // other ants can be placed on any field in the colony
                         fieldsForNewAnt.add(fields[x][y]);
             }
         }
@@ -97,6 +100,10 @@ public class AntColony {
     private boolean isFieldOnBorderOfColony(int x, int y) {
         return x == 0 || x == colonySize - 1 ||
                 y == 0 || y == colonySize - 1;
+    }
+
+    private boolean isLastRowOrColumnField(int x, int y) {
+        return x == colonySize - 1 || y == colonySize - 1;
     }
 
     private Field getRandomFreeField(Field[ ] fieldsForNewAnt) {
