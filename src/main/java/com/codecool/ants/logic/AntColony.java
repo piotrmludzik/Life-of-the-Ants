@@ -79,35 +79,24 @@ public class AntColony {
 
     private Field[ ] getFieldsForNewAnt(String antType) {
         List<Field> fieldsForNewAnt = new ArrayList<>();
-        switch (antType) {
-            case Ant.AntsType.DRONE:
-                getFieldsForDrones(fieldsForNewAnt);
-                break;
-            default:  // other ants
-                getAllFields(fieldsForNewAnt);
+        for (int x=0; x < colonySize; x++) {
+            for (int y=0; y < colonySize; y++)
+                switch (antType) {
+                    case Ant.AntsType.DRONE:
+                        if (isFieldOnBorderOfColony(x, y))
+                            fieldsForNewAnt.add(fields[x][y]);
+                        break;
+                    default: // other ants
+                        fieldsForNewAnt.add(fields[x][y]);
+            }
         }
 
         return fieldsForNewAnt.toArray(new Field[0]);
     }
 
-    private void getFieldsForDrones(List<Field> fieldsForNewAnt) {
-        for (int x=0; x < colonySize; x++) {
-            for (int y=0; y < colonySize; y++)
-                if (isBorderOfColony(x, y))
-                    fieldsForNewAnt.add(fields[x][y]);
-        }
-    }
-
-    private boolean isBorderOfColony(int x, int y) {
+    private boolean isFieldOnBorderOfColony(int x, int y) {
         return x == 0 || x == colonySize - 1 ||
                 y == 0 || y == colonySize - 1;
-    }
-
-    private void getAllFields(List<Field> fieldsForNewAnt) {
-        for (int x=0; x < colonySize; x++) {
-            for (int y=0; y < colonySize; y++)
-                fieldsForNewAnt.add(fields[x][y]);
-        }
     }
 
     private Field getRandomFreeField(Field[ ] fieldsForNewAnt) {
