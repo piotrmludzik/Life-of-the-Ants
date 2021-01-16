@@ -13,7 +13,7 @@ public class AntColony {
 
     private final SimulatorSettings settings;
     private final Field[][] fields;
-    private int colonySize;
+    private final int colonySize;
     private int generation = 0;
 
     public AntColony(SimulatorSettings settings) {
