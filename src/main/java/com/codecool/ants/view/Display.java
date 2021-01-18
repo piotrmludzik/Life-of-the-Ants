@@ -62,7 +62,7 @@ public class Display {
     }
 
     private void colonyScheme() {
-        Field[][] fields = antColony.getFields();
+        Field[ ][ ] fields = antColony.getFields();
         int colonySize = simulator.getSettings().getColonySize();
 
         println(center("┏" + "━━".repeat(colonySize) + "┓"));
