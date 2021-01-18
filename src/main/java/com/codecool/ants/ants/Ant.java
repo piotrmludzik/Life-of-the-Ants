@@ -38,10 +38,13 @@ public abstract class Ant {
     public void move() {}
 
     protected void move(Direction direction) {
-        Position targetPosition = new Position(
+        move(new Position(
                 getPosition().x + direction.vectorX,
                 getPosition().y + direction.vectorY
-        );
+        ));
+    }
+
+    protected void move(Position targetPosition) {
         if (isMoveOutOfColony(targetPosition)) return;
 
         Field targetField = getField().getNeighborField(targetPosition);

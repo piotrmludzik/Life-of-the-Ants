@@ -2,15 +2,19 @@ package com.codecool.ants.ants;
 
 import com.codecool.ants.logic.Field;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
 public class AntFactory {
 
-    public static Ant createAnt(String className, Field field) {
-        className = "com.codecool.ants.ants." + className;
+    public static Ant createAnt(String antType, Field field, Queen queen) {
+        String className = "com.codecool.ants.ants." + antType;
 
         try {
-            return (Ant) Class.forName(className).getConstructor(Field.class).newInstance(field);
+            if (antType.equals(Ant.AntsType.DRONE))  // drone has a queen reference
+                return (Ant) Drone.class.getConstructor(Field.class, Queen.class).newInstance(field, queen);
+            else  // other ants
+                return (Ant) Class.forName(className).getConstructor(Field.class).newInstance(field);
         } catch (InstantiationException |
                 IllegalAccessException |
                 InvocationTargetException |

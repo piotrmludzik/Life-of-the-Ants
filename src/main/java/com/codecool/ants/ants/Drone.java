@@ -1,23 +1,43 @@
 package com.codecool.ants.ants;
 
+import com.codecool.ants.geometry.Distance;
+import com.codecool.ants.geometry.Position;
 import com.codecool.ants.logic.Field;
 
 public class Drone extends Ant {
 
     private final int HOLD_VALUE = 10;
 
-//    private final Queen queen;
+    private final Queen queen;
+    private final Distance movingDistance = new Distance();
+    private final Distance traveledDistance = new Distance();
     private int holdCount = HOLD_VALUE;
 
-    public Drone(Field field) {
+    public Drone(Field field, Queen queen) {
         super(field, 'D');
-//        this.queen = queen;
+        this.queen = queen;
+
+        setMovingDistance();
+    }
+
+    private void setMovingDistance() {
+        float distanceToTravelX = queen.getPosition().x - getPosition().x;
+        float distanceToTravelY = queen.getPosition().y - getPosition().y;
+
+        float biggerValue = Math.max(Math.abs(distanceToTravelX), Math.abs(distanceToTravelY));
+        movingDistance.x = distanceToTravelX / biggerValue;
+        movingDistance.y = distanceToTravelY / biggerValue;
     }
 
     @Override
     public void move() {
-        // TODO: implement the ant drone move.
-        super.move();
+        int targetX = (int) Math.floor(traveledDistance.x + movingDistance.x);
+        int targetY = (int) Math.floor(traveledDistance.y + movingDistance.y);
+
+        super.move(new Position(targetX, targetY));
+
+        traveledDistance.x = traveledDistance.x + movingDistance.x;
+        traveledDistance.y = traveledDistance.y + movingDistance.y;
     }
 
     private boolean isPossessedQueen() {

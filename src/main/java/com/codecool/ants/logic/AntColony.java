@@ -14,6 +14,7 @@ public class AntColony {
     private final SimulatorSettings settings;
     private final Field[][] fields;
     private final int colonySize;
+    private final Queen queen;
     private int generation = 0;
 
     public AntColony(SimulatorSettings settings) {
@@ -21,7 +22,7 @@ public class AntColony {
         this.colonySize = settings.getColonySize();
 
         fields = generateFields();
-        enterQueen();
+        queen = enterQueen();
         generateAnts();
     }
 
@@ -35,10 +36,12 @@ public class AntColony {
         return newColony;
     }
 
-    private void enterQueen() {
+    private Queen enterQueen() {
         int middle = settings.getColonySize() / 2;
         Field homeField = fields[middle][middle];
         homeField.setAnt(new Queen(homeField));
+
+        return (Queen) homeField.getAnt();
     }
 
     private void generateAnts() {
@@ -49,7 +52,7 @@ public class AntColony {
 
             for (int n=0; n < ants.getValue(); n++) {  // getValue -> ants number
                 Field freeField = getRandomFreeField(fieldsForNewAnt);
-                freeField.setAnt(AntFactory.createAnt(ants.getKey(), freeField));  // getKey -> an ant type
+                freeField.setAnt(AntFactory.createAnt(ants.getKey(), freeField, queen));  // getKey -> an ant type
             }
         }
 
