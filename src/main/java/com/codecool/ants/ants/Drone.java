@@ -17,6 +17,8 @@ public class Drone extends Ant {
         super(field, 'D');
         this.queen = queen;
 
+        traveledDistance.x = getPosition().x;
+        traveledDistance.y = getPosition().y;
         setMovingDistance();
     }
 

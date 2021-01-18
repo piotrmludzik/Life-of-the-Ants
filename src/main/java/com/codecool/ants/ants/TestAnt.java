@@ -15,6 +15,8 @@ public class TestAnt extends Ant {
         super(field, 'T');
         this.queen = queen;
 
+        traveledDistance.x = getPosition().x;
+        traveledDistance.y = getPosition().y;
         setMovingDistance();
     }
 
