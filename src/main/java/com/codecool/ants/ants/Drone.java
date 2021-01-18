@@ -33,8 +33,14 @@ public class Drone extends Ant {
 
     @Override
     public void move() {
-        if (isNextToQueen())
+        if (isNextToQueen()) {
+            if (isWaitToLong()) {
+                resetHoldCount();
+            };
+            holdCount--;
+
             return;
+        }
 
         int targetX = (int) Math.floor(traveledDistance.x + movingDistance.x);
         int targetY = (int) Math.floor(traveledDistance.y + movingDistance.y);
@@ -55,6 +61,10 @@ public class Drone extends Ant {
     private boolean isPossessedQueen() {
         // TODO: implement isPossessedQueen().
         return false;
+    }
+
+    private boolean isWaitToLong() {
+        return holdCount == 0;
     }
 
     private void resetHoldCount() {
