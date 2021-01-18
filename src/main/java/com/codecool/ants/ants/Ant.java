@@ -17,6 +17,7 @@ public abstract class Ant {
 
     private final char symbol;
     private Field field;
+    private boolean moved;
 
     public Ant(Field field, char symbol) {
         this.field = field;
@@ -45,11 +46,13 @@ public abstract class Ant {
     }
 
     protected void move(Position targetPosition) {
+        moved = false;
         if (isMoveOutOfColony(targetPosition)) return;
 
         Field targetField = getField().getNeighborField(targetPosition);
         if (isMoveOnOtherAnt(targetField)) return;
 
+        moved = true;
         field.removeAnt();
         field = targetField;
         field.setAnt(this);
@@ -61,5 +64,9 @@ public abstract class Ant {
 
     private boolean isMoveOnOtherAnt(Field targetField) {
         return targetField.hasAnt();
+    }
+
+    protected boolean didNotMove() {
+        return !moved;
     }
 }
