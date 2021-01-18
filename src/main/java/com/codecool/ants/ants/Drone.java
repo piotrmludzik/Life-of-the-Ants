@@ -38,6 +38,9 @@ public class Drone extends Ant {
 
         super.move(new Position(targetX, targetY));
 
+        if (didNotMove())
+            return;
+
         traveledDistance.x = traveledDistance.x + movingDistance.x;
         traveledDistance.y = traveledDistance.y + movingDistance.y;
     }
