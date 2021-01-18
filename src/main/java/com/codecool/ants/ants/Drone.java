@@ -33,6 +33,9 @@ public class Drone extends Ant {
 
     @Override
     public void move() {
+        if (isNextToQueen())
+            return;
+
         int targetX = (int) Math.floor(traveledDistance.x + movingDistance.x);
         int targetY = (int) Math.floor(traveledDistance.y + movingDistance.y);
 
@@ -43,6 +46,10 @@ public class Drone extends Ant {
 
         traveledDistance.x = traveledDistance.x + movingDistance.x;
         traveledDistance.y = traveledDistance.y + movingDistance.y;
+    }
+
+    private boolean isNextToQueen() {
+        return queen.isDroneNearby(this);
     }
 
     private boolean isPossessedQueen() {
