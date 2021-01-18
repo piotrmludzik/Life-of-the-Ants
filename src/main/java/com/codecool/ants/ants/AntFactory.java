@@ -11,6 +11,8 @@ public class AntFactory {
         String className = "com.codecool.ants.ants." + antType;
 
         try {
+            if (antType.equals("TestAnt"))  // Note: only for test!
+                return (Ant) TestAnt.class.getConstructor(Field.class, Queen.class).newInstance(field, queen);
             if (antType.equals(Ant.AntsType.DRONE))  // drone has a queen reference
                 return (Ant) Drone.class.getConstructor(Field.class, Queen.class).newInstance(field, queen);
             else  // other ants

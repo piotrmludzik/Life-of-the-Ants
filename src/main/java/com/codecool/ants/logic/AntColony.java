@@ -12,7 +12,7 @@ import java.util.*;
 public class AntColony {
 
     private final SimulatorSettings settings;
-    private final Field[][] fields;
+    private final Field[ ][ ] fields;
     private final int colonySize;
     private final Queen queen;
     private int generation = 0;
@@ -56,20 +56,13 @@ public class AntColony {
             }
         }
 
-//        // ------------------------------------------------------------------------------------------------------------
-//        // A Test Ant
-//        // ------------------------------------------------------------------------------------------------------------
-//        System.out.println("Create a Test Ant");
-//        int randX;
-//        int randY;
-//        do {
-//            randX = Randomizer.randomFromRange(0, colonySize);
-//            randY = Randomizer.randomFromRange(0, colonySize);
-//        } while (getField(randX, randY).hasAnt());
-//
-//        Field field = getField(randX, randY);
-//        field.setAnt(AntFactory.createAnt("TestAnt", field));
-//        // ------------------------------------------------------------------------------------------------------------
+        // ------------------------------------------------------------------------------------------------------------
+        // A Test Ant
+        // ------------------------------------------------------------------------------------------------------------
+        System.out.println("Create a Test Ant");
+        Field field = getField(0, 5);
+        field.setAnt(AntFactory.createAnt("TestAnt", field, queen));
+        // ------------------------------------------------------------------------------------------------------------
     }
 
     private Map<String, Integer> getAntsInColony() {
