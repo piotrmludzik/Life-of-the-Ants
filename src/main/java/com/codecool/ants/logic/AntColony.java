@@ -28,8 +28,8 @@ public class AntColony {
 
     private Field[ ][ ] generateFields() {
         Field[ ][ ] newColony = new Field[colonySize][colonySize];
-        for (int x=0; x < colonySize; x++) {
-            for (int y=0; y < colonySize; y++)
+        for (int x = 0; x < colonySize; x++) {
+            for (int y = 0; y < colonySize; y++)
                 newColony[x][y] = new Field(new Position(x, y), this);
         }
 
@@ -50,7 +50,7 @@ public class AntColony {
         for (Map.Entry<String, Integer> ants : antsInColony.entrySet()) {
             Field[ ] fieldsForNewAnt = getFieldsForNewAnt(ants.getKey());  // getKey -> an ant type
 
-            for (int n=0; n < ants.getValue(); n++) {  // getValue -> ants number
+            for (int n = 0; n < ants.getValue(); n++) {  // getValue -> ants number
                 Field freeField = getRandomFreeField(fieldsForNewAnt);
                 freeField.setAnt(AntFactory.createAnt(ants.getKey(), freeField, queen));  // getKey -> an ant type
             }
@@ -75,8 +75,8 @@ public class AntColony {
 
     private Field[ ] getFieldsForNewAnt(String antType) {
         List<Field> fieldsForNewAnt = new ArrayList<>();
-        for (int x=0; x < colonySize; x++) {
-            for (int y=0; y < colonySize; y++)
+        for (int x = 0; x < colonySize; x++) {
+            for (int y = 0; y < colonySize; y++)
                 switch (antType) {
                     case Ant.AntsType.DRONE:  // move around
                         if (isFieldOnBorderOfColony(x, y))
@@ -135,8 +135,8 @@ public class AntColony {
         int colonySize = settings.getColonySize();
 
         List<Ant> antsToMove = new ArrayList<>();
-        for (int x=0; x < colonySize; x++) {
-            for (int y=0; y < colonySize; y++) {
+        for (int x = 0; x < colonySize; x++) {
+            for (int y = 0; y < colonySize; y++) {
                 if (fields[x][y].hasAnt())
                     antsToMove.add(fields[x][y].getAnt());
             }
