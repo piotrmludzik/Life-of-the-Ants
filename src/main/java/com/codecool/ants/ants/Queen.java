@@ -2,6 +2,7 @@ package com.codecool.ants.ants;
 
 import com.codecool.ants.geometry.Position;
 import com.codecool.ants.logic.Field;
+import com.codecool.ants.util.Randomizer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
 public class Queen extends Ant {
 
     private final List<Field> nearbyFields = new ArrayList<>();
-    private int matingMood;
+    private int stepsToMatingMood;
 
     public Queen(Field field) {
         super(field, 'Q');
@@ -30,7 +31,7 @@ public class Queen extends Ant {
     @Override
     public void move() {
         // The Queen cannot move from her throne!
-        matingMood--;
+        stepsToMatingMood--;
     }
 
     public boolean isDroneNearby(Drone drone) {
@@ -43,10 +44,10 @@ public class Queen extends Ant {
     }
 
     public void setNewMatingMood() {
-        // TODO: implement setMatingMood().
+        stepsToMatingMood = Randomizer.randomFromRange(50, 100);
     }
 
     public boolean hasMatingMood() {
-        return matingMood == 0;
+        return stepsToMatingMood == 0;
     }
 }
