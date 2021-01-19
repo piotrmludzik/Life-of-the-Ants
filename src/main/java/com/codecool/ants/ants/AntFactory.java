@@ -2,25 +2,20 @@ package com.codecool.ants.ants;
 
 import com.codecool.ants.logic.Field;
 
-import java.lang.reflect.InvocationTargetException;
+import java.security.InvalidParameterException;
 
 public class AntFactory {
 
     public static Ant createAnt(String antType, Field field, Queen queen) {
-        String className = "com.codecool.ants.ants." + antType;
-
-        try {
-            if (antType.equals(Ant.AntsType.DRONE))  // drone has a queen reference
-                return (Ant) Drone.class.getConstructor(Field.class, Queen.class).newInstance(field, queen);
-            else  // other ants
-                return (Ant) Class.forName(className).getConstructor(Field.class).newInstance(field);
-        } catch (InstantiationException |
-                IllegalAccessException |
-                InvocationTargetException |
-                NoSuchMethodException |
-                ClassNotFoundException e) {
-            e.printStackTrace();
-            return null;
+        switch (antType) {
+            case Ant.AntsType.WORKER:
+                return new Worker(field);
+            case Ant.AntsType.SOLDIER:
+                return new Soldier(field);
+            case Ant.AntsType.DRONE:
+                return new Drone(field, queen);
+            default:
+                throw new InvalidParameterException("Not recognized an ant type.");
         }
     }
 
