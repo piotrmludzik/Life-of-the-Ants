@@ -32,6 +32,10 @@ public abstract class Ant {
         return field;
     }
 
+    public void setField(Field field) {
+        this.field = field;
+    }
+
     public Position getPosition() {
         return field.getPosition();
     }

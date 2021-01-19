@@ -17,9 +17,13 @@ public class Drone extends Ant {
         super(field, 'D');
         this.queen = queen;
 
+        setTraveledDistance();
+        setMovingDistance();
+    }
+
+    private void setTraveledDistance() {
         traveledDistance.x = getPosition().x;
         traveledDistance.y = getPosition().y;
-        setMovingDistance();
     }
 
     private void setMovingDistance() {
@@ -34,11 +38,10 @@ public class Drone extends Ant {
     @Override
     public void move() {
         if (isNextToQueen()) {
-            if (isWaitToLong()) {
-                resetHoldCount();
-            };
-            holdCount--;
-
+            if (isWaitToLong())
+                kickAwayDrone();
+            else
+                holdCount--;
             return;
         }
 
@@ -64,7 +67,15 @@ public class Drone extends Ant {
     }
 
     private boolean isWaitToLong() {
-        return holdCount == 0;
+        return holdCount == 1;
+    }
+
+    private void kickAwayDrone() {
+        getField().getAntColony().kickAwayDrone(this);
+
+        setTraveledDistance();
+        setMovingDistance();
+        resetHoldCount();
     }
 
     private void resetHoldCount() {

@@ -3,6 +3,7 @@ package com.codecool.ants.logic;
 import com.codecool.ants.SimulatorSettings;
 import com.codecool.ants.ants.Ant;
 import com.codecool.ants.ants.AntFactory;
+import com.codecool.ants.ants.Drone;
 import com.codecool.ants.ants.Queen;
 import com.codecool.ants.geometry.Position;
 import com.codecool.ants.util.Randomizer;
@@ -148,5 +149,14 @@ public class AntColony {
     public boolean isPositionOutOfColony(Position target) {
         return target.x < 0 || target.x > colonySize - 1 ||
                 target.y < 0 || target.y > colonySize - 1;
+    }
+
+    public void kickAwayDrone(Drone drone) {
+        Field[ ] startFieldsForDrone = getFieldsForNewAnt(Ant.AntsType.DRONE);
+        Field startField = getRandomFreeField(startFieldsForDrone);
+
+        drone.getField().removeAnt();
+        startField.setAnt(drone);
+        drone.setField(startField);
     }
 }
