@@ -31,7 +31,7 @@ public abstract class Ant {
         return field.getPosition();
     }
 
-    public void move() {}
+    public abstract void move();
 
     protected void move(Direction direction) {
         move(new Position(
