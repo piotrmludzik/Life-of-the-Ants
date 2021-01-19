@@ -33,11 +33,12 @@ public class Field {
     public void removeAnt() {
         setAnt(null);
     }
-    public Field getNeighborField(Position target) {
-        return antColony.getField(target.x, target.y);
-    }
 
     public boolean hasAnt() {
         return ant != null;
+    }
+
+    public Field getNeighborField(Position target) {
+        return antColony.getField(target.x, target.y);
     }
 }
