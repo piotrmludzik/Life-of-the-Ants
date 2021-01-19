@@ -56,14 +56,6 @@ public class AntColony {
                 freeField.setAnt(AntFactory.createAnt(ants.getKey(), freeField, queen));  // getKey -> an ant type
             }
         }
-
-//        // ------------------------------------------------------------------------------------------------------------
-//        // A Test Ant
-//        // ------------------------------------------------------------------------------------------------------------
-//        System.out.println("Create a Test Ant");
-//        Field field = getField(0, 5);
-//        field.setAnt(AntFactory.createAnt("TestAnt", field, queen));
-//        // ------------------------------------------------------------------------------------------------------------
     }
 
     private Map<String, Integer> getAntsInColony() {

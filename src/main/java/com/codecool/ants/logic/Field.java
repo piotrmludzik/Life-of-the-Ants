@@ -1,7 +1,6 @@
 package com.codecool.ants.logic;
 
 import com.codecool.ants.ants.Ant;
-import com.codecool.ants.geometry.Direction;
 import com.codecool.ants.geometry.Position;
 
 public class Field {
