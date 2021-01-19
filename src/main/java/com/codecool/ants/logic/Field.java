@@ -5,7 +5,7 @@ import com.codecool.ants.geometry.Position;
 
 public class Field {
 
-    private AntColony antColony;
+    private final AntColony antColony;
     private final Position position;
     private Ant ant = null;
 

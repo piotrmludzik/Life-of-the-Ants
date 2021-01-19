@@ -2,7 +2,6 @@ package com.codecool.ants.ui;
 
 import com.codecool.ants.Simulator;
 import com.codecool.ants.logic.AntColony;
-import com.codecool.ants.logic.Field;
 
 public class Display {
 
@@ -13,7 +12,7 @@ public class Display {
     public Display(Simulator simulator) {
         this.simulator = simulator;
         this.antColony = simulator.getAntColony();
-        this.maxWidth = (Math.max(simulator.getSettings().getColonySize() * 2 + 4, 65));  // * 2 - double size to dispaly, +4 - space to border, 65 - min. size
+        this.maxWidth = (Math.max(simulator.getSettings().getColonySize() * 2 + 4, 65));  // * 2 - double size to display, +4 - space to border, 65 - min. size
     }
 
     public void welcome() {
@@ -64,7 +63,6 @@ public class Display {
     }
 
     private void colonyScheme() {
-        Field[ ][ ] fields = antColony.getFields();
         int colonySize = simulator.getSettings().getColonySize();
 
         println(center("┏" + "━━".repeat(colonySize) + "┓"));

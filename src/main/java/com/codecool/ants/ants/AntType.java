@@ -4,5 +4,5 @@ public enum AntType {
     QUEEN,
     WORKER,
     SOLDIER,
-    DRONE;
+    DRONE
 }
