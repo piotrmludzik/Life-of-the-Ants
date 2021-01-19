@@ -6,13 +6,13 @@ import java.security.InvalidParameterException;
 
 public class AntFactory {
 
-    public static Ant createAnt(String antType, Field field, Queen queen) {
+    public static Ant createAnt(AntType antType, Field field, Queen queen) {
         switch (antType) {
-            case Ant.AntsType.WORKER:
+            case WORKER:
                 return new Worker(field);
-            case Ant.AntsType.SOLDIER:
+            case SOLDIER:
                 return new Soldier(field);
-            case Ant.AntsType.DRONE:
+            case DRONE:
                 return new Drone(field, queen);
             default:
                 throw new InvalidParameterException("Not recognized an ant type.");

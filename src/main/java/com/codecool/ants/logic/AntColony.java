@@ -1,10 +1,7 @@
 package com.codecool.ants.logic;
 
 import com.codecool.ants.SimulatorSettings;
-import com.codecool.ants.ants.Ant;
-import com.codecool.ants.ants.AntFactory;
-import com.codecool.ants.ants.Drone;
-import com.codecool.ants.ants.Queen;
+import com.codecool.ants.ants.*;
 import com.codecool.ants.geometry.Position;
 import com.codecool.ants.util.Randomizer;
 
@@ -46,9 +43,9 @@ public class AntColony {
     }
 
     private void generateAnts() {
-        Map<String, Integer> antsInColony = getAntsInColony();
+        Map<AntType, Integer> antsInColony = getAntsInColony();
 
-        for (Map.Entry<String, Integer> ants : antsInColony.entrySet()) {
+        for (Map.Entry<AntType, Integer> ants : antsInColony.entrySet()) {
             Field[ ] fieldsForNewAnt = getFieldsForNewAnt(ants.getKey());  // getKey -> an ant type
 
             for (int n = 0; n < ants.getValue(); n++) {  // getValue -> ants number
@@ -58,24 +55,24 @@ public class AntColony {
         }
     }
 
-    private Map<String, Integer> getAntsInColony() {
+    private Map<AntType, Integer> getAntsInColony() {
         return new HashMap<>(){{
-            put(Ant.AntsType.WORKER, settings.getWorkersNumber());
-            put(Ant.AntsType.SOLDIER, settings.getSoldiersNumber());
-            put (Ant.AntsType.DRONE, settings.getDronesNumber());
+            put(AntType.WORKER, settings.getWorkersNumber());
+            put(AntType.SOLDIER, settings.getSoldiersNumber());
+            put (AntType.DRONE, settings.getDronesNumber());
         }};
     }
 
-    private Field[ ] getFieldsForNewAnt(String antType) {
+    private Field[ ] getFieldsForNewAnt(AntType antType) {
         List<Field> fieldsForNewAnt = new ArrayList<>();
         for (int x = 0; x < colonySize; x++) {
             for (int y = 0; y < colonySize; y++)
                 switch (antType) {
-                    case Ant.AntsType.DRONE:  // move around
+                    case DRONE:  // move around
                         if (isFieldOnBorderOfColony(x, y))
                             fieldsForNewAnt.add(fields[x][y]);
                         break;
-                    case Ant.AntsType.SOLDIER:  // cannot be in the last row or column (then cannot move)
+                    case SOLDIER:  // cannot be in the last row or column (then cannot move)
                         if (isLastRowOrColumnField(x, y))
                             break;
                     default:  // other ants can be placed on any field in the colony
@@ -152,7 +149,7 @@ public class AntColony {
     }
 
     public void kickAwayDrone(Drone drone) {
-        Field[ ] startFieldsForDrone = getFieldsForNewAnt(Ant.AntsType.DRONE);
+        Field[ ] startFieldsForDrone = getFieldsForNewAnt(AntType.DRONE);
         Field startField = getRandomFreeField(startFieldsForDrone);
 
         drone.getField().removeAnt();
