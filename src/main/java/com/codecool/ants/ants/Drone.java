@@ -11,6 +11,7 @@ public class Drone extends Ant {
     private final Queen queen;
     private final Distance movingDistance = new Distance();
     private final Distance traveledDistance = new Distance();
+    private boolean possessedQueen = false;
     private int holdCount = HOLD_VALUE;
 
     public Drone(Field field, Queen queen) {
@@ -38,10 +39,16 @@ public class Drone extends Ant {
     @Override
     public void move() {
         if (isNextToQueen()) {
-            if (isWaitToLong())
-                kickAwayDrone();
-            else
+            if (queen.hasMatingMood())
+                matingWithQueen();
+
+            if (possessedQueen && shouldStayMoreTime()) {
                 holdCount--;
+                return;
+            }
+
+            kickAwayDrone();
+            possessedQueen = false;
             return;
         }
 
@@ -61,13 +68,14 @@ public class Drone extends Ant {
         return queen.isDroneNearby(this);
     }
 
-    private boolean isPossessedQueen() {
-        // TODO: implement isPossessedQueen().
-        return false;
+    private void matingWithQueen() {
+        queen.setNewMatingMood();
+        getField().getAntColony().increaseGeneration();
+        possessedQueen = true;
     }
 
-    private boolean isWaitToLong() {
-        return holdCount == 1;
+    private boolean shouldStayMoreTime() {
+        return !(holdCount == 1);
     }
 
     private void kickAwayDrone() {

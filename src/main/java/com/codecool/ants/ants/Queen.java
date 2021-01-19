@@ -31,7 +31,8 @@ public class Queen extends Ant {
     @Override
     public void move() {
         // The Queen cannot move from her throne!
-        stepsToMatingMood--;
+        if (!hasMatingMood())
+            stepsToMatingMood--;
     }
 
     public boolean isDroneNearby(Drone drone) {

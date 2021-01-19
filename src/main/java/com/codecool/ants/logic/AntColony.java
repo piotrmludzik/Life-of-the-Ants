@@ -124,6 +124,10 @@ public class AntColony {
         return generation;
     }
 
+    public void increaseGeneration() {
+        generation++;
+    }
+
     public void update() {
         int colonySize = settings.getColonySize();
 
