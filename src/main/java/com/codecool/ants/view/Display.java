@@ -13,7 +13,7 @@ public class Display {
     public Display(Simulator simulator) {
         this.simulator = simulator;
         this.antColony = simulator.getAntColony();
-        this.maxWidth = (Math.max(simulator.getSettings().getColonySize() * 2 + 4, 50));  // * 2 - double size to dispaly, +4 - space to border, 50 - min. size
+        this.maxWidth = (Math.max(simulator.getSettings().getColonySize() * 2 + 4, 65));  // * 2 - double size to dispaly, +4 - space to border, 65 - min. size
     }
 
     public void welcome() {
@@ -58,7 +58,9 @@ public class Display {
     }
 
     private void colonyStatus() {
-        println(" Day: " + simulator.getActualStep() + "   Generation of ants: " + antColony.getGeneration());
+        println(" Day: " + simulator.getActualStep() +
+                "   Generation of ants: " + antColony.getGeneration() +
+                "   Queen is mating mood: " + antColony.getQueen().hasMatingMood());
     }
 
     private void colonyScheme() {

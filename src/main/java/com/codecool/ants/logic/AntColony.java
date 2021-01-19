@@ -120,6 +120,10 @@ public class AntColony {
         return colonySize;
     }
 
+    public Queen getQueen() {
+        return queen;
+    }
+
     public int getGeneration() {
         return generation;
     }
