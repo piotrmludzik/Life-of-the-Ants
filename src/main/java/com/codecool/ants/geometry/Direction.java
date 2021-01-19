@@ -13,13 +13,4 @@ package com.codecool.ants.geometry;
             this.vectorX = vectorX;
             this.vectorY = vectorY;
         }
-
-        public static Direction[ ] getDirectionPossibilities() {
-            Direction[] possibilities = new Direction[Direction.values().length];
-            int i = 0;
-            for (Direction direction : Direction.values())
-                possibilities[i++] = direction;
-
-            return possibilities;
-        }
     }

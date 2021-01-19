@@ -6,7 +6,7 @@ import com.codecool.ants.util.Randomizer;
 
 public class Worker extends Ant {
 
-    private Direction lastDirection = Randomizer.chooseDirection(Direction.getDirectionPossibilities());
+    private Direction lastDirection = Randomizer.chooseDirection(Direction.values());
 
     public Worker(Field field) {
         super(field, 'W');
@@ -16,7 +16,7 @@ public class Worker extends Ant {
     public void move() {
         boolean changeDirection = Randomizer.eventWithChance(30);
         if (changeDirection)
-            lastDirection = Randomizer.chooseDirection(Direction.getDirectionPossibilities());
+            lastDirection = Randomizer.chooseDirection(Direction.values());
 
         super.move(lastDirection);
     }
