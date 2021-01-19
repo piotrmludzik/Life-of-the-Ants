@@ -1,9 +1,9 @@
 package com.codecool.ants;
 
 import com.codecool.ants.logic.AntColony;
-import com.codecool.ants.view.Display;
-import com.codecool.ants.view.Keyboard;;
-import com.codecool.ants.view.Keyboard.Key;
+import com.codecool.ants.ui.Display;
+import com.codecool.ants.ui.Keyboard;
+import com.codecool.ants.ui.Keyboard.Key;
 
 public class Simulator {
 

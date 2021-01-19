@@ -1,4 +1,4 @@
-package com.codecool.ants.view;
+package com.codecool.ants.ui;
 
 import java.util.Scanner;
 

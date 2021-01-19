@@ -1,4 +1,4 @@
-package com.codecool.ants.view;
+package com.codecool.ants.ui;
 
 import com.codecool.ants.Simulator;
 import com.codecool.ants.logic.AntColony;
