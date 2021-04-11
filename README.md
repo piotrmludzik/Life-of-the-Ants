@@ -28,11 +28,17 @@ as well as additional information can be found in [Wiki](https://github.com/piot
 ![application preview](readme_res/preview.png)
 
 
+## Real-time preview
+
+[https://replit.com/@piotrmludzik/Life-of-the-Ants](https://replit.com/@piotrmludzik/Life-of-the-Ants)
+
+
 ## Used technologies:
 
 [![Java](readme_res/technologies/java.png)](https://docs.oracle.com/en/java/)
 [![Intellij IDEA](readme_res/technologies/intellij.png)](https://www.jetbrains.com/idea/)
 [![GitHub](readme_res/technologies/github.png)](https://github.com/)
+[![Replit](readme_res/technologies/replit.png)](https://replit.com)
 
 
 ## Challenges:
