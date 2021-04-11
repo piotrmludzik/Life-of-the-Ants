@@ -30,7 +30,7 @@ public class Simulator {
         return actualStep;
     }
 
-    public static void main(String[] args) {
+    public static void run() {
         Simulator simulator = new Simulator();
         simulator.welcome();
         simulator.start();
