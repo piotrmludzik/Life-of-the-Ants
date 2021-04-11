@@ -11,3 +11,7 @@ target/
 ### temporary ###
 temp/
 *.tmp
+
+
+### GitHub Wiki source folder ###
+wiki/
